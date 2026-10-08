@@ -2,9 +2,174 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alix Drummond — UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Alix Drummond, UI/UX designer. Selected case studies in product, interaction and visual design.">
+  <meta name="theme-color" content="#FCF8F5">
+  <meta property="og:title" content="Alix Drummond — UI/UX Designer">
+  <meta property="og:description" content="Serious design. Playful thinking. Selected case studies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- three.js for the 3D console (loaded from a CDN, no build step needed) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="app.js"></script>
 </head>
 <body>
-  <h1>Portfolio coming soon</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#/">Alix Drummond</a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-toggle-label">Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="has-sub">
+            <button class="nav-link sub-toggle" type="button" aria-expanded="false" aria-controls="projects-menu">
+              Projects
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="sub-menu" id="projects-menu" hidden></ul>
+          </li>
+          <li><a class="nav-link" href="#/about" data-nav="about">About me</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <ul class="social">
+          <!-- EDIT: your email -->
+          <li><a class="icon-btn" href="mailto:hello@example.com" aria-label="Email Alix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg>
+          </a></li>
+          <!-- EDIT: your LinkedIn URL -->
+          <li><a class="icon-btn" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener" aria-label="Alix on LinkedIn (opens in a new tab)">
+            <span class="in" aria-hidden="true">in</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ============ HOME ============ -->
+    <section class="view" id="view-home" data-view="home" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <h1 class="hero-title" id="home-title" tabindex="-1">Serious Design. <em>Playful thinking.</em></h1>
+          <!-- EDIT: your one-line intro -->
+          <p class="hero-intro">Hi! I’m Alix Drummond, a UI/UX designer who [what you do, and who you do it for — one line].</p>
+          <a class="text-link" href="#/about">More about me <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="stage-wrap">
+          <div class="stage" id="stage" role="img" aria-label="A pink dual-screen handheld console. Choose a project below to load it."></div>
+          <p class="stage-hint" aria-hidden="true"><span class="hint-hover">Hover a cartridge to preview · Click to play</span><span class="hint-touch">Tap a cartridge to play</span></p>
+        </div>
+      </div>
+
+      <section class="work" aria-labelledby="work-title">
+        <div class="work-head">
+          <div>
+            <h2 id="work-title">Selected work</h2>
+            <p class="work-sub">Pick a cartridge to load the case study.</p>
+          </div>
+          <div class="carousel-controls">
+            <button class="ctrl" type="button" data-dir="-1" aria-label="Previous project">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            </button>
+            <button class="ctrl" type="button" id="autoplay-toggle" aria-label="Pause carousel">
+              <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+            </button>
+            <button class="ctrl" type="button" data-dir="1" aria-label="Next project">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Projects. Use the arrow keys to move between projects.">
+          <ul class="track" id="track"></ul>
+        </div>
+        <noscript><p class="wrap">This site needs JavaScript for the project carousel.</p></noscript>
+      </section>
+    </section>
+
+    <!-- ============ PROJECT (filled in by app.js) ============ -->
+    <article class="view" id="view-project" data-view="project" hidden></article>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="view" id="view-about" data-view="about" aria-labelledby="about-title" hidden>
+      <div class="wrap about">
+        <div class="about-head">
+          <p class="eyebrow">About me</p>
+          <h1 id="about-title" tabindex="-1">Hi, I’m Alix.</h1>
+          <p class="lead">[Two sentences: the kind of designer you are, and the problems you love solving.]</p>
+        </div>
+
+        <div class="about-grid">
+          <figure class="about-photo">
+            <!-- EDIT: replace with <img src="images/alix.jpg" alt="Alix Drummond smiling in a sunlit studio"> -->
+            <div class="ph" role="img" aria-label="Placeholder for a portrait photo"><span>[Portrait photo]</span></div>
+          </figure>
+
+          <div class="about-body">
+            <h2>How I work</h2>
+            <p>[Your process in a short paragraph — how you go from a fuzzy problem to a shipped, tested design.]</p>
+
+            <h2>What I do</h2>
+            <ul class="pill-list">
+              <li>User research</li><li>Interaction design</li><li>Prototyping</li><li>Visual &amp; UI design</li><li>Design systems</li><li>Usability testing</li>
+            </ul>
+
+            <h2>Experience</h2>
+            <ol class="timeline">
+              <li><span class="t-years">[Year – Year]</span><span class="t-role">[Role] · [Company]</span></li>
+              <li><span class="t-years">[Year – Year]</span><span class="t-role">[Role] · [Company]</span></li>
+              <li><span class="t-years">[Year]</span><span class="t-role">[Degree / course] · [School]</span></li>
+            </ol>
+
+            <!-- EDIT: add resume.pdf to your repo -->
+            <a class="button" href="resume.pdf" download>Download résumé <span class="sr-only">(PDF)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER / CONTACT ============ -->
+  <footer class="site-footer" id="contact" aria-labelledby="contact-title">
+    <div class="wrap footer-inner">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Let’s make something good.</h2>
+      <!-- EDIT: your email -->
+      <a class="footer-email" href="mailto:hello@example.com">hello@example.com</a>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="resume.pdf" download>Résumé (PDF)</a></li>
+      </ul>
+      <p class="footer-small">© <span id="year"></span> Alix Drummond</p>
+    </div>
+  </footer>
+
+  <!-- Transition layers -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="wipe" aria-hidden="true"></div>
+  <button class="skip-anim" type="button" hidden>Skip animation <kbd>Esc</kbd></button>
+  <div class="sr-only" aria-live="polite" id="announcer"></div>
 </body>
 </html>
